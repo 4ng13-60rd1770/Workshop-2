@@ -7,6 +7,12 @@
 body{
     background-color: #fff;
 }
+
+header{
+    position: fixed;
+    z-index: 9;
+    width: 100%; 
+}
 .container-fluid{
     justify-content:center;
     text-align: center;
