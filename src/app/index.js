@@ -43,7 +43,6 @@ cardGroup.addEventListener("click", async(e) => {
   const idProduct = await products(urlId);
 
   if(clase[2] == "btn-primary") {
-    console.log(urlId)
     const { nombre, imagen1, imagen2, precio, descripcion } = idProduct;
     
       modalContent.innerHTML = `
@@ -81,11 +80,11 @@ cardGroup.addEventListener("click", async(e) => {
           </div>
         </div>
 
-        <div class="modal-footer">
+        <div class="modal-footer" id="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Cerrar
           </button>
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="add-car btn btn-primary">
             Añadir al carrito
           </button>
         </div>
@@ -104,26 +103,25 @@ cardGroup.addEventListener("click", async(e) => {
 
 
 
-// cardGroup.addEventListener("click", async(e) => {
-//   const id = e.target.id;
+
+let counter = 0;
+const idCounter = document.getElementById("counter");
+// idCounter.value = 6
+modalContent.addEventListener("click", (e) => {
   
-//   if(id){
-//     console.log("hola", id)
+  const classAddCar = e.target.classList;
+  if(classAddCar[0] == "add-car"){
+    
+    counter += 1
+    // localStorage.setItem("counter", counter);
+    idCounter.style.visibility = "visible"
+    idCounter.value = counter
+    // if(){
 
-//   const resDelete = await fetch(url+id, {
-//     method: 'DELETE',
-//     // headers: {
-//     //   'Content-Type': 'charset=utf-8'
-//     // }
-//   });
-//   // const dataDelete = await resDelete.json()
+    // }
+   }
 
-//   }
-
-
-// })
-
-
+})
 
 
   

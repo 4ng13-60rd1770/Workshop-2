@@ -13,6 +13,26 @@ header{
     z-index: 9;
     width: 100%; 
 }
+.navbar-text {
+    display: flex;
+}
+.counter {
+    position: relative; 
+    cursor: pointer;
+}
+.counter > input {
+    background-color: #ff4c13;
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    top: -5px;
+    left: -20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    visibility: hidden;
+}
 main {
     padding-top: 130px;
 }
