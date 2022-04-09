@@ -13,6 +13,9 @@ header{
     z-index: 9;
     width: 100%; 
 }
+main {
+    padding-top: 130px;
+}
 .container-fluid{
     justify-content:center;
     text-align: center;
@@ -45,6 +48,53 @@ footer{
     display: flex;
     justify-content: space-between;
 }
-.imgProduct {
-    height: 300px;
+.modal-body {
+    display: flex;
 }
+.container-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.scroll {
+    display: flex;
+    height: 300px;
+    width: 200px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.scroll > img {
+    width: 100%;
+    scroll-snap-align: center;
+    object-fit: cover;
+    margin: 10px;
+    
+}
+.talla > div {
+    display: flex;
+    justify-content: space-around;
+}
+.talla > div > p {
+    /* background-color: aqua; */
+    height: 37px;
+    width: 37px;
+    margin: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.talla > div > p:hover {
+    border: solid 3px #ff4c13;
+}
+
+@media (max-width: 767px) {
+    .cards-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .card {
+        margin: 0 auto;
+    }
+} 

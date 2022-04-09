@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", async() => {
     });
     
   });
-  const detailsModal = document.getElementById("details-modal");
   
 cardGroup.addEventListener("click", async(e) => {
   const id = e.target.id;{};
@@ -48,13 +47,30 @@ cardGroup.addEventListener("click", async(e) => {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src=${imagen1} alt=${nombre} class="imgProduct">
-          <img src=${imagen2} alt=${nombre} class="imgProduct">
-          <p>
-            ${precio}
-          </p>
-          <div>
-            ${descripcion}
+          <div class="scroll">
+            <img src=${imagen1} alt=${nombre} >
+            <img src=${imagen2} alt=${nombre} >
+          </div>
+
+          <div class="container-description">
+            <p>
+              $${precio}
+            </p>
+          
+            <div class="talla">
+              <p>
+                Talla
+              </p>
+              <div>
+                <p>L</p>
+                <p>M</p>
+                <p>XL</p>
+                <p>XXL</p>
+              </div> 
+            </div> 
+            <p>
+              ${descripcion}
+            </p>
           </div>
         </div>
 
