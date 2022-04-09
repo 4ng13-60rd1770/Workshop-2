@@ -19,9 +19,13 @@ document.addEventListener("DOMContentLoaded", async() => {
         <img src=${imagen1} class="card-img-top" alt=${nombre}>
         <div class="card-body">
           <h5 class="card-title">${nombre}</h5>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id=${id}>
+          <button type="button" class="${id} btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id=${id}>
             Más detalles
           </button>
+          <button class=" ${id} btn btn-danger" id="delete-${id}">
+            Eliminar
+          </button>
+          
         </div>
       </div>
       `  
@@ -29,14 +33,17 @@ document.addEventListener("DOMContentLoaded", async() => {
     
   });
   
+
+
+
+
 cardGroup.addEventListener("click", async(e) => {
-  const id = e.target.id;{};
+  const clase = e.target.classList;
+  const urlId = url+clase[0];
+  const idProduct = await products(urlId);
 
-  const idProduct = await products(url+id);
-
-
-  if(id == idProduct.id) {
-
+  if(clase[2] == "btn-primary") {
+    console.log(urlId)
     const { nombre, imagen1, imagen2, precio, descripcion } = idProduct;
     
       modalContent.innerHTML = `
@@ -83,6 +90,40 @@ cardGroup.addEventListener("click", async(e) => {
           </button>
         </div>
     `
+  } else if(clase[2] == "btn-danger") {
+    console.log(urlId)
+    const resDelete = await fetch(urlId, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'charset=utf-8'
+      }
+    });
+    const dataDelete = await resDelete.json()
   }
-})
+});
+
+
+
+// cardGroup.addEventListener("click", async(e) => {
+//   const id = e.target.id;
+  
+//   if(id){
+//     console.log("hola", id)
+
+//   const resDelete = await fetch(url+id, {
+//     method: 'DELETE',
+//     // headers: {
+//     //   'Content-Type': 'charset=utf-8'
+//     // }
+//   });
+//   // const dataDelete = await resDelete.json()
+
+//   }
+
+
+// })
+
+
+
+
   
