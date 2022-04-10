@@ -5,6 +5,8 @@ const url = "https://worksopap.herokuapp.com/productos/";
 
 const cardGroup = document.getElementById("card-group");
 const modalContent = document.getElementById("modal-content");
+const offcanvasBody = document.getElementById("offcanvas-body");
+const addProduct = document.getElementById("add-product");
 
 
 document.addEventListener("DOMContentLoaded", async() => {
@@ -36,14 +38,14 @@ document.addEventListener("DOMContentLoaded", async() => {
 
 
 
-
+// INFORMACION DEL MODAL 
 cardGroup.addEventListener("click", async(e) => {
   const clase = e.target.classList;
   const urlId = url+clase[0];
   const idProduct = await products(urlId);
 
   if(clase[2] == "btn-primary") {
-    const { nombre, imagen1, imagen2, precio, descripcion } = idProduct;
+    const { nombre, imagen1, imagen2, precio, descripcion, id } = idProduct;
     
       modalContent.innerHTML = `
         <div class="modal-header">
@@ -84,7 +86,7 @@ cardGroup.addEventListener("click", async(e) => {
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Cerrar
           </button>
-          <button type="button" class="add-car btn btn-primary">
+          <button type="button" class="${id} add-car btn btn-primary">
             Añadir al carrito
           </button>
         </div>
@@ -103,25 +105,64 @@ cardGroup.addEventListener("click", async(e) => {
 
 
 
-
+let arrCar = [];
 let counter = 0;
 const idCounter = document.getElementById("counter");
-// idCounter.value = 6
-modalContent.addEventListener("click", (e) => {
+// BOTONES DEL MODAL 
+modalContent.addEventListener("click", async(e) => {
   
   const classAddCar = e.target.classList;
-  if(classAddCar[0] == "add-car"){
+
+  const response = await fetch(url+classAddCar[0]);
+  const objData = await response.json();
+
+  
+  if(classAddCar[1] == "add-car"){
+    counter += 1;
+    idCounter.style.visibility = "visible";
+    idCounter.value = counter;
     
-    counter += 1
-    // localStorage.setItem("counter", counter);
-    idCounter.style.visibility = "visible"
-    idCounter.value = counter
-    // if(){
+    arrCar.push(objData);
+    offcanvasBody.innerHTML += `
+      <tr class="table-primary">
+        <td class="table-primary">
+          <img src=${objData.imagen1} alt="">
+        </td>  
+        <td class="table-primary">
+          <p>${objData.nombre}</p>
+        </td>
+        <td class="table-primary">
+          <p>$  ${objData.precio}</p>
+        </td>
 
-    // }
+      </tr>`
+    
+    // localStorage.setItem("arrCar", JSON.stringify(objData));
+
    }
+   
+});
 
+
+addProduct.addEventListener("submit", async() => {
+  const nameProduct = document.getElementById("name-product").value;
+  const priceProduct = document.getElementById("price-product").value;
+  const urlProductProduct = document.getElementById("url-product").value;
+
+  const obj = {
+    nombre: nameProduct,
+    precio: priceProduct,
+    imagen1: urlProductProduct
+  }
+  const res = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(obj),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    }
+  })
 })
+
 
 
   

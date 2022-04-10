@@ -54,6 +54,9 @@ p{
     font-family: 'Jost', sans-serif;
     text-align: center;
 }
+.table-primary img {
+    height: 100px;
+}
 .btn.btn-dark {
     text-align: center;
     padding:15px;

@@ -30,9 +30,23 @@
               <div>
                 <i class="bi bi-person"style="font-size: 40px; margin:15px;"></i>
               </div>
-              <div class="counter">
+              <!-- OFCANVAS  -->
+              <div class="counter" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" >
                 <i class="bi bi-bag" style="font-size:40px;"  margin-right:20em;></i>
                 <input type="number" id="counter" readonly>
+              </div>
+              <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="height: 70%;">
+                <div class="offcanvas-header">
+                  <h5 id="offcanvasTopLabel">Carrito de Compra</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <table class="table-primary" id="offcanvas-body">
+                    
+                    <!-- Carrito de compras pintado desde el javascript -->
+
+                  </table>
+                </div>
               </div>
             </span>
           </div>
@@ -61,6 +75,21 @@
               <button type="button" class="btn btn-dark">Shop the Collection</button>
               <button type="button" class="btn btn-dark" >Explore the Shop</button>
           </div>
+          <form style="width: 70%; margin: 200px auto;" id="add-product">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nombre del Producto</label>
+              <input type="text" class="form-control" id="name-product" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="price-product">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Url de la Imagen</label>
+              <input type="text" class="form-control" id="url-product" aria-describedby="emailHelp">
+            </div>
+            <button type="submit" class="btn btn-primary">Añadir</button>
+          </form>
 
           <!---CARDS-->
           <div class="cards-group" id="card-group">
@@ -74,7 +103,7 @@
 
 
                 
-
+ 
                 
 
               </div>
